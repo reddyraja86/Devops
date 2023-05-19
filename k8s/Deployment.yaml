@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-application-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: devops-application
+  template:
+    metadata:
+      labels:
+        app: devops-application
+    spec:
+      containers:
+        - name: devops-application
+          image: devops-github-actions:latest
+          ports:
+            - containerPort: 8080
