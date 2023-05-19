@@ -1,4 +1,4 @@
-FROM adoptopenjdk:17-jre-hotspot-alpine
+FROM openjdk:17
 WORKDIR /app
 COPY target/Devops.jar Devops.jar
 EXPOSE 8080
