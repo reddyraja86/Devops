@@ -24,6 +24,7 @@ env:
   DEPLOYMENT_NAME: devops-application-deployment # TODO: update to deployment name
   REPOSITORY: github-actions # TODO: update to Artifact Registry docker repository
   IMAGE: static-site
+  DOCKER_TOKEN: ${{ env.DOCKER_TOKEN }}
 
 jobs:
   setup-build-publish-deploy:
