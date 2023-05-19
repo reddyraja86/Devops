@@ -16,7 +16,7 @@ public class HelloWorldController {
                 "- Run Unit test\n</br>" +
                 "- Run Automation\n</br>" +
                 "- Run Security Tests\n</br>" +
-                "- Build Docker Image\n</br>" +
+                "- Build Dockerfile Image\n</br>" +
                 "- Scan image\n</br>" +
                 "- Push image to GAR\n</br>" +
                 "- Deploy image to Registry\n</br>" +
