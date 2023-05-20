@@ -57,22 +57,22 @@ jobs:
           tags: javajvm007/devops-github-actions:latest
 
 # Deploying to GAR
-      - uses: actions/checkout@v3
-      - name: Authenticate to Google Cloud
-        id: auth
-        uses: google-github-actions/auth@v0
-        with:
-          workload_identity_provider: projects/123123123/locations/global/workloadIdentityPools/the-workload-pool/providers/the-provider
-          service_account: only-storage-object-adm@<PROJECT_ID>.iam.gserviceaccount.com
-      - uses: RafikFarhad/push-to-gcr-github-action@v5-beta
-        with:
-          # gcloud_service_key: ${{ secrets.GCLOUD_SERVICE_KEY }} # can be base64 encoded or plain text || not needed if you use google-github-actions/auth
-          registry: gcr.io
-          project_id: my-awesome-project
-          image_name: backend
-          image_tag: latest,v1
-          dockerfile: ./docker/Dockerfile.prod
-          context: ./docker
+#      - uses: actions/checkout@v3
+#      - name: Authenticate to Google Cloud
+#        id: auth
+#        uses: google-github-actions/auth@v0
+#        with:
+#          workload_identity_provider: projects/123123123/locations/global/workloadIdentityPools/the-workload-pool/providers/the-provider
+#          service_account: only-storage-object-adm@<PROJECT_ID>.iam.gserviceaccount.com
+#      - uses: RafikFarhad/push-to-gcr-github-action@v5-beta
+#        with:
+#          # gcloud_service_key: ${{ secrets.GCLOUD_SERVICE_KEY }} # can be base64 encoded or plain text || not needed if you use google-github-actions/auth
+#          registry: gcr.io
+#          project_id: my-awesome-project
+#          image_name: backend
+#          image_tag: latest,v1
+#          dockerfile: ./docker/Dockerfile.prod
+#          context: ./docker
 
 # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
 #    - name: Update dependency graph
