@@ -73,7 +73,7 @@ jobs:
           credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
 
       - name: Push Docker Image to Google Artifactory Registry ( GAR )
-        uses: par-tec/docker-push-gar-image@latest
+        uses: javajvm007/devops-github-actions:latest
         with:
           image_name: myimage
           image_tag: latest
