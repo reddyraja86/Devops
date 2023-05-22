@@ -89,6 +89,10 @@ jobs:
 #        with:
 #          workload_identity_provider: projects/123123123/locations/global/workloadIdentityPools/the-workload-pool/providers/the-provider
 #          service_account: only-storage-object-adm@<PROJECT_ID>.iam.gserviceaccount.com
+
+      - name: Build with Maven
+        run: mvn clean install package -DskipTests
+
       - name: Push Docker Image to Google Artifactory Registry ( GAR )
         uses: RafikFarhad/push-to-gcr-github-action@v5-beta
         with:
