@@ -13,6 +13,15 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
+env:
+  PROJECT_ID: ${{ secrets.GKE_PROJECT }}
+  GAR_LOCATION: us-central1 # TODO: update region of the Artifact Registry
+  GKE_CLUSTER: autopilot-cluster-1    # TODO: update to cluster name
+  GKE_ZONE: us-central1-b #us-central1-c us-central1-f us-central1-a us-central1-c   # TODO: update to cluster zone
+  DEPLOYMENT_NAME: devops-application-deployment # TODO: update to deployment name
+  REPOSITORY: github-actions # TODO: update to Artifact Registry docker repository
+  IMAGE: static-site
+  DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
 
 jobs:
   build:
@@ -55,6 +64,13 @@ jobs:
           file: Docker/Dockerfile
           push: true
           tags: javajvm007/devops-github-actions:latest
+
+      # Alternative option - authentication via credentials json
+      - name: Authenticate to Google Cloud
+        id: 'auth'
+        uses: 'google-github-actions/auth@v0'
+        with:
+          credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
 
 # Deploying to GAR
 #      - uses: actions/checkout@v3
