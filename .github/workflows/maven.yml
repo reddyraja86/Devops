@@ -72,14 +72,14 @@ jobs:
         with:
           credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
 
-      - name: Push Docker Image to Google Artifactory Registry ( GAR )
-        uses: javajvm007/devops-github-actions:latest
-        with:
-          image_name: myimage
-          image_tag: latest
-          gar_hostname: us-central1-docker.pkg.dev
-          gar_project: $PROJECT_ID
-          gar_service_account: ${{ secrets.GCLOUD_SERVICE_KEY }}
+#      - name: Push Docker Image to Google Artifactory Registry ( GAR )
+#        uses: par-tec/docker-push-gar-image@latest
+#        with:
+#          image_name: myimage
+#          image_tag: latest
+#          gar_hostname: us-central1-docker.pkg.dev
+#          gar_project: $PROJECT_ID
+#          gar_service_account: ${{ secrets.GCLOUD_SERVICE_KEY }}
 
 # Deploying to GAR
 #      - uses: actions/checkout@v3
@@ -89,15 +89,16 @@ jobs:
 #        with:
 #          workload_identity_provider: projects/123123123/locations/global/workloadIdentityPools/the-workload-pool/providers/the-provider
 #          service_account: only-storage-object-adm@<PROJECT_ID>.iam.gserviceaccount.com
-#      - uses: RafikFarhad/push-to-gcr-github-action@v5-beta
-#        with:
-#          # gcloud_service_key: ${{ secrets.GCLOUD_SERVICE_KEY }} # can be base64 encoded or plain text || not needed if you use google-github-actions/auth
-#          registry: gcr.io
-#          project_id: my-awesome-project
-#          image_name: backend
-#          image_tag: latest,v1
-#          dockerfile: ./docker/Dockerfile.prod
-#          context: ./docker
+      - name: Push Docker Image to Google Artifactory Registry ( GAR )
+        uses: RafikFarhad/push-to-gcr-github-action@v5-beta
+        with:
+          gcloud_service_key: ${{ secrets.GCLOUD_SERVICE_KEY }} # can be base64 encoded or plain text || not needed if you use google-github-actions/auth
+          registry: gcr.io
+          project_id: $PROJECT_ID
+          image_name: backend
+          image_tag: latest,v1
+          dockerfile: ./Docker/Dockerfile
+          context: ./Docker
 
 # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
 #    - name: Update dependency graph
