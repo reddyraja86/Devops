@@ -72,6 +72,15 @@ jobs:
         with:
           credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
 
+      - name: Push Docker Image to Google Artifactory Registry ( GAR )
+        uses: par-tec/docker-push-gar-image@latest
+        with:
+          image_name: myimage
+          image_tag: latest
+          gar_hostname: us-central1-docker.pkg.dev
+          gar_project: $PROJECT_ID
+          gar_service_account: ${{ secrets.GCLOUD_SERVICE_KEY }}
+
 # Deploying to GAR
 #      - uses: actions/checkout@v3
 #      - name: Authenticate to Google Cloud
