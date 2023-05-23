@@ -102,11 +102,11 @@ jobs:
           context: .
 
       # Get the GKE credentials so we can deploy to the cluster
-      - uses: google-github-actions/get-gke-credentials@db150f2cc60d1716e61922b832eae71d2a45938f
-        with:
-          cluster_name: autopilot-cluster-1
-          location: us-central1-a
-          use_auth_provider: ${{ secrets.GKE_SA_KEY }}
+#      - uses: google-github-actions/get-gke-credentials@db150f2cc60d1716e61922b832eae71d2a45938f
+#        with:
+#          cluster_name: autopilot-cluster-1
+#          location: us-central1-a
+#          use_auth_provider: ${{ secrets.GKE_SA_KEY }}
 
       # Set up kustomize
       - name: Set up Kustomize
